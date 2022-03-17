@@ -1,17 +1,27 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Data {
 
-    public static void printMatchingCountryName() {
-        System.out.println(createCars().stream()
-                .filter(x -> x.producent.getModel().equals("BMW"))
-                .filter(x -> x.isAutomaticGear)
-                .filter(x -> x.dimensions.getTrankCapacity() > 300)
-                .map(x -> x.market.getCoutries())
+    public static void printMatchingCountryName(String model, boolean isAutomaticGear, int trankCapacity) {
+        List<Country> collect = createCars().stream()
+                .filter(x -> x.getProducent().getModel().equals(model))
+                .filter(x -> x.isAutomaticGear() == isAutomaticGear)
+                .filter(x -> x.getDimensions().getTrankCapacity() > trankCapacity)
+                .map(x -> x.getMarket().getCoutries())
                 .flatMap(List::stream)
-                .collect(Collectors.toList()));
+                .collect(Collectors.toList());
+
+        Set<String> countries = new HashSet<>();
+
+        for (Country coutry : collect) {
+            int i = 0;
+            countries.add(coutry.toString());
+        }
+        System.out.println(countries);
     }
 
     private static ArrayList<Country> createCoutries() {

@@ -1,9 +1,9 @@
 public class Car {
-    Producent producent;
-    boolean isAutomaticGear;
-    Market market;
-    String segment;
-    Dimension dimensions;
+    private Producent producent;
+    private boolean isAutomaticGear;
+    private Market market;
+    private String segment;
+    private Dimension dimensions;
 
     public Car(Producent producent, boolean isAutomaticGear, Market market, String segment, Dimension dimensions) {
         this.producent = producent;
@@ -21,5 +21,21 @@ public class Car {
                 "\n   market = " + market +
                 "\n   segment = " + segment +
                 "\n   dimensions = " + dimensions + "\n";
+    }
+
+    public Producent getProducent() {
+        return producent;
+    }
+
+    public boolean isAutomaticGear() {
+        return isAutomaticGear;
+    }
+
+    public Market getMarket() {
+        return market;
+    }
+
+    public Dimension getDimensions() {
+        return dimensions;
     }
 }
